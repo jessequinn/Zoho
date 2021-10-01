@@ -8,7 +8,7 @@ import (
 func (c *API) FetchWorkspaces(workspacesID zoho.Parameter) (data WorkspaceResponse, err error) {
 	endpoint := zoho.Endpoint{
 		Name:         FetchWorkspacesModule,
-		URL:          fmt.Sprintf("https://www.zohoapis.%s/bookings/v1/json/%s", c.ZohoTLD,FetchWorkspacesModule),
+		URL:          fmt.Sprintf("https://www.zohoapis.%s/bookings/v1/json/%s", c.ZohoTLD, FetchWorkspacesModule),
 		Method:       zoho.HTTPGet,
 		ResponseData: &WorkspaceResponse{},
 		URLParameters: map[string]zoho.Parameter{
@@ -25,7 +25,7 @@ func (c *API) FetchWorkspaces(workspacesID zoho.Parameter) (data WorkspaceRespon
 		return WorkspaceResponse{}, fmt.Errorf("Failed to retrieve workspaces: %s", err)
 	}
 
-	if v,ok := endpoint.ResponseData.(*WorkspaceResponse); ok {
+	if v, ok := endpoint.ResponseData.(*WorkspaceResponse); ok {
 		return *v, nil
 	}
 	return WorkspaceResponse{}, fmt.Errorf("Data retrieved was not 'Workspace Response'")
@@ -36,7 +36,7 @@ type WorkspaceResponse struct {
 		ReturnValue struct {
 			Data []struct {
 				Name string `json:"name"`
-				Id string `json:"id"`
+				Id   string `json:"id"`
 			} `json:"data"`
 		} `json:"returnvalue"`
 		Status string `json:"status"`

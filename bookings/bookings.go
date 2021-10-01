@@ -10,15 +10,15 @@ import (
 type BookingsModule = string
 
 const (
-	GetAppointmentModule BookingsModule = "getappointment"
-	GetAvailabilityModule BookingsModule = "availableslots"
-	FetchWorkspacesModule BookingsModule = "workspaces"
-	FetchServicesModule BookingsModule = "services"
-	FetchStaffModule BookingsModule = "staffs"
-	FetchResourceModule BookingsModule = "resources"
-	BookAppointmentModule BookingsModule = "appointment"
+	GetAppointmentModule        BookingsModule = "getappointment"
+	GetAvailabilityModule       BookingsModule = "availableslots"
+	FetchWorkspacesModule       BookingsModule = "workspaces"
+	FetchServicesModule         BookingsModule = "services"
+	FetchStaffModule            BookingsModule = "staffs"
+	FetchResourceModule         BookingsModule = "resources"
+	BookAppointmentModule       BookingsModule = "appointment"
 	RescheduleAppointmentModule BookingsModule = "rescheduleappointment"
-	UpdateAppointmentModule BookingsModule = "updateappointment"
+	UpdateAppointmentModule     BookingsModule = "updateappointment"
 )
 
 // API is used for interacting with the Zoho expense API

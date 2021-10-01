@@ -15,14 +15,14 @@ func (c *API) FetchAvailability(serviceID zoho.Parameter, staffID zoho.Parameter
 			"filter_by": "",
 		},
 	}
-	if serviceID == ""{
+	if serviceID == "" {
 		return AvailabilityResponse{}, fmt.Errorf("Failed to execute FetchAvailability due to non-availability of service_id")
 	}
 	endpoint.URLParameters["service_id"] = serviceID
 
-    if staffID == "" && resourceID == "" {
-        return AvailabilityResponse{}, fmt.Errorf("Failed to execute FetchAvailability due to non-availability of both staff_id and resource_id(atleast one is required)")
-    }
+	if staffID == "" && resourceID == "" {
+		return AvailabilityResponse{}, fmt.Errorf("Failed to execute FetchAvailability due to non-availability of both staff_id and resource_id(atleast one is required)")
+	}
 	if resourceID != "" {
 		endpoint.URLParameters["resource_id"] = resourceID
 	}
@@ -30,7 +30,7 @@ func (c *API) FetchAvailability(serviceID zoho.Parameter, staffID zoho.Parameter
 		endpoint.URLParameters["staff_id"] = staffID
 	}
 
-    if date == ""{
+	if date == "" {
 		return AvailabilityResponse{}, fmt.Errorf("Failed to execute FetchAvailability due to non-availability of date")
 	}
 	endpoint.URLParameters["selected_date"] = date
@@ -40,7 +40,7 @@ func (c *API) FetchAvailability(serviceID zoho.Parameter, staffID zoho.Parameter
 		return AvailabilityResponse{}, fmt.Errorf("Failed to retrieve services: %s", err)
 	}
 
-	if v,ok := endpoint.ResponseData.(*AvailabilityResponse); ok {
+	if v, ok := endpoint.ResponseData.(*AvailabilityResponse); ok {
 		return *v, nil
 	}
 	return AvailabilityResponse{}, fmt.Errorf("Data retrieved was not 'Service Response'")
@@ -49,9 +49,9 @@ func (c *API) FetchAvailability(serviceID zoho.Parameter, staffID zoho.Parameter
 type AvailabilityResponse struct {
 	Response struct {
 		ReturnValue struct {
-            Response bool `json:"response"`
-			Data []string `json:"data"`
-            TimeZone string `json:"time_zone"`
+			Response bool     `json:"response"`
+			Data     []string `json:"data"`
+			TimeZone string   `json:"time_zone"`
 		} `json:"returnvalue"`
 		Status string `json:"status"`
 	} `json:"response"`

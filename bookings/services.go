@@ -15,7 +15,7 @@ func (c *API) FetchServices(workspacesID zoho.Parameter, serviceID zoho.Paramete
 			"filter_by": "",
 		},
 	}
-	if workspacesID == ""{
+	if workspacesID == "" {
 		return ServiceResponse{}, fmt.Errorf("Failed to execute FetchServices due to non-availability of workspace_id")
 	}
 	endpoint.URLParameters["workspace_id"] = workspacesID
@@ -31,7 +31,7 @@ func (c *API) FetchServices(workspacesID zoho.Parameter, serviceID zoho.Paramete
 		return ServiceResponse{}, fmt.Errorf("Failed to retrieve services: %s", err)
 	}
 
-	if v,ok := endpoint.ResponseData.(*ServiceResponse); ok {
+	if v, ok := endpoint.ResponseData.(*ServiceResponse); ok {
 		return *v, nil
 	}
 	return ServiceResponse{}, fmt.Errorf("Data retrieved was not 'Service Response'")
@@ -41,12 +41,12 @@ type ServiceResponse struct {
 	Response struct {
 		ReturnValue struct {
 			Data []struct {
-				Duration string `json:"duration"`
+				Duration   string `json:"duration"`
 				Buffertime string `json:"buffertime"`
-				Price int `json:"price"`
-				Name string `json:"name"`
-				Currency string `json:"currency"`
-				Id string `json:"id"`
+				Price      int    `json:"price"`
+				Name       string `json:"name"`
+				Currency   string `json:"currency"`
+				Id         string `json:"id"`
 			} `json:"data"`
 		} `json:"returnvalue"`
 		Status string `json:"status"`

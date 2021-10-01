@@ -28,7 +28,7 @@ func (c *API) FetchResources(resourceID zoho.Parameter, serviceID zoho.Parameter
 		return ResourceResponse{}, fmt.Errorf("Failed to retrieve resources: %s", err)
 	}
 
-	if v,ok := endpoint.ResponseData.(*ResourceResponse); ok {
+	if v, ok := endpoint.ResponseData.(*ResourceResponse); ok {
 		return *v, nil
 	}
 	return ResourceResponse{}, fmt.Errorf("Data retrieved was not 'Resource Response'")
@@ -39,7 +39,7 @@ type ResourceResponse struct {
 		ReturnValue struct {
 			Data []struct {
 				Name string `json:"name"`
-				Id string `json:"id"`
+				Id   string `json:"id"`
 			} `json:"data"`
 		} `json:"returnvalue"`
 		Status string `json:"status"`
